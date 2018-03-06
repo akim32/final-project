@@ -1,0 +1,90 @@
+<h1>
+  All questions
+</h1>
+
+<a href="/questions/new">
+  Add a new question
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Question
+    </th>
+
+    <th>
+      Answer
+    </th>
+
+    <th>
+      Answer explanation
+    </th>
+
+    <th>
+      Subject
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @questions.each do |question| %>
+  <tr>
+    <td>
+      <%= question.id %>
+    </td>
+
+    <td>
+      <%= question.question %>
+    </td>
+
+    <td>
+      <%= question.answer %>
+    </td>
+
+    <td>
+      <%= question.answer_explanation %>
+    </td>
+
+    <td>
+      <%= question.chat_room.title %>
+    </td>
+
+    <td>
+      <%= question.user.name %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(question.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(question.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/questions/<%= question.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,71 @@
+<!-- Validation failure messages -->
+<% if @question.present? %>
+  <% if @question.errors.any? %>
+    <% @question.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new question
+</h1>
+
+<hr>
+
+<form action="/create_question" method="post">
+  <!-- Label and input for question -->
+  <div class="form-group">
+    <label for="question">
+      Question
+    </label>
+
+    <input type="text" id="question" name="question" class="form-control" value="<%= @question.try(:question) %>">
+  </div>
+
+  <!-- Label and input for answer -->
+  <div class="form-group">
+    <label for="answer">
+      Answer
+    </label>
+
+    <input type="text" id="answer" name="answer" class="form-control" value="<%= @question.try(:answer) %>">
+  </div>
+
+  <!-- Label and input for answer_explanation -->
+  <div class="form-group">
+    <label for="answer_explanation">
+      Answer explanation
+    </label>
+
+    <input type="text" id="answer_explanation" name="answer_explanation" class="form-control" value="<%= @question.try(:answer_explanation) %>">
+  </div>
+
+  <!-- Label and input for actor_id -->
+  <div class="form-group">
+    <label for="chat_room_id">
+      Subject
+    </label>
+
+    <%= select_tag("chat_room_id", options_from_collection_for_select(ChatRoom.all, :id, :title), :class => "form-control") %>
+  </div>
+  
+  <a href="/chat_rooms/new">or add a new subject first</a>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create question
+  </button>
+</form>
+
+<hr>
+
+<a href="/questions">
+  Go back
+</a>

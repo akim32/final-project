@@ -1,0 +1,70 @@
+<h1>
+  Question #<%= @question.id %> details
+</h1>
+
+<a href="/questions/<%= @question.id %>/edit">
+  Edit question
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Question
+  </dt>
+  <dd>
+    <%= @question.question %>
+  </dd>
+
+  <dt>
+    Answer
+  </dt>
+  <dd>
+    <%= @question.answer %>
+  </dd>
+
+  <dt>
+    Answer explanation
+  </dt>
+  <dd>
+    <%= @question.answer_explanation %>
+  </dd>
+
+  <dt>
+    Chat room
+  </dt>
+  <dd>
+    <%= @question.chat_room_id %>
+  </dd>
+
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @question.user_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@question.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@question.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_question/<%= @question.id %>">
+  Delete question
+</a>
+
+<hr>
+
+<a href="/questions">
+  Go back
+</a>

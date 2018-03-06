@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/firstdraft/draft_generators.git
+  revision: e01917b1608133c48ed81be447b32446eb2eda51
+  specs:
+    draft_generators (0.0.3)
+      devise
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -185,6 +192,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha3)
   coffee-rails (~> 4.1.0)
   devise
+  draft_generators!
   jquery-rails
   pg
   pry-rails

@@ -1,0 +1,71 @@
+<!-- Validation failure messages -->
+<% if @question.errors.any? %>
+  <% @question.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit question #<%= @question.id %>
+</h1>
+
+<hr>
+
+<form action="/update_question/<%= @question.id %>" method="post">
+  <!-- Label and input for question -->
+  <div class="form-group">
+    <label for="question">
+      Question
+    </label>
+
+    <input type="text" id="question" name="question" class="form-control" value="<%= @question.question %>">
+  </div>
+
+  <!-- Label and input for answer -->
+  <div class="form-group">
+    <label for="answer">
+      Answer
+    </label>
+
+    <input type="text" id="answer" name="answer" class="form-control" value="<%= @question.answer %>">
+  </div>
+
+  <!-- Label and input for answer_explanation -->
+  <div class="form-group">
+    <label for="answer_explanation">
+      Answer explanation
+    </label>
+
+    <input type="text" id="answer_explanation" name="answer_explanation" class="form-control" value="<%= @question.answer_explanation %>">
+  </div>
+
+  <!-- Label and input for chat_room_id -->
+  <div class="form-group">
+    <label for="chat_room_id">
+      Chat room
+    </label>
+
+    <input type="text" id="chat_room_id" name="chat_room_id" class="form-control" value="<%= @question.chat_room_id %>">
+  </div>
+
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @question.user_id %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update question
+  </button>
+</form>
+
+<hr>
+
+<a href="/questions">
+  Go back
+</a>

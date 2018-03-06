@@ -25,6 +25,7 @@ gem 'devise'
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'draft_generators', github: 'firstdraft/draft_generators'
 end
 
 group :production do
