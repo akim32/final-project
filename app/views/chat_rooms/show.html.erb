@@ -4,8 +4,14 @@
   <%= render @chat_room_messages %>
 </div>
 <hr>
-
+<%= $vault %>
 <hr>
+<%= $vault[0][1][:answer] %>
+<hr>
+
+<%= $vault.index($vault.detect{|aa| aa.include?("Intro")}) %>
+<%= $vault.index($vault.detect{|aa| aa.include?("Intro")}).class %>
+
 
 
 <%= form_for @message, url: '#' do |f| %>

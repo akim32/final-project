@@ -3,29 +3,7 @@ class ChatRoom < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :questions, dependent: :destroy
   
-  #put all rooms in a variable.
-  @subjects = ChatRoom.all 
-  #instantiate global hash for all qna, sorted by subject
-  $vault = [] 
-  
-  @subjects.each do |subject|
-    @subject_questions = [subject.title]
-    #put each question into a hash, then put into the @subject_questions array
-    subject.questions.each do |question|
-      
-      @append_question = { 
-        :question_id => question.id,
-        :question => question.question,
-        :answer => question.answer
-        }
-      # add question hash to the array
-      @subject_questions.push(@append_question)
-    end
-    #push subject to vault
-    $vault.push(@subject_questions)
-    
-  end
-  
+
 
   
   def generate_for(room_id)
