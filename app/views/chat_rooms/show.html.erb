@@ -1,17 +1,15 @@
 <h1><%= @chat_room.title %></h1>
 
 <div id="messages" data-chat-room-id="<%= @chat_room.id %>">
+  <!-- opening message (fix this) --> 
+  <span class="text-muted">Welcome to the game.  The current question is: <%= @current_question %><br>
   <%= render @chat_room_messages %>
 </div>
 <hr>
-<%= $vault %>
+Vault Array <%= $vault %>
 <hr>
-<%= $vault[0][1][:answer] %>
+<p>(ANSWER IS): <%= $vault[0][1][:answer] %> </p>
 <hr>
-
-<%= $vault.index($vault.detect{|aa| aa.include?("Intro")}) %>
-<%= $vault.index($vault.detect{|aa| aa.include?("Intro")}).class %>
-
 
 
 <%= form_for @message, url: '#' do |f| %>

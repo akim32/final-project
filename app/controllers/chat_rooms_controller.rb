@@ -22,6 +22,10 @@ class ChatRoomsController < ApplicationController
     @chat_room_messages = @chat_room.messages.limit(11)
     # @chat_room_questions = @chat_room.generate_for(@chat_room)
     @message = Message.new
+    #set variable for current question
+    @room_title = @chat_room.title
+    @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
+    @current_question = $vault[@question_index][1][:question]
   end
 
   private
