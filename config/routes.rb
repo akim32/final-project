@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   # Routes for the Question resource:
 
   # CREATE
@@ -18,7 +22,15 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  devise_for :users
+  # Routes for the Question resource.  MAKESHIFT SOLUTION - ONLY FOR DEVELOPMENT PURPOSES TO TRACK ALL MESSAGES:
+
+  # READ
+  get("/messages", { :controller => "messages", :action => "index" })
+
+  #------------------------------
+
+
+  
 
   resources :chat_rooms, only: [:new, :create, :show, :index]
 

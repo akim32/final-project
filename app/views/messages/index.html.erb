@@ -1,0 +1,59 @@
+
+<h1>
+  All messages
+</h1>
+
+
+<table class="table">
+  <tr>
+    <th>
+      MID
+    </th>
+
+    <th>
+      CID
+    </th>
+
+    <th>
+      UID
+    </th>
+
+    <th>
+      BODY
+    </th>
+
+    <th>
+      TIME
+    </th>
+
+    <th>
+    </th>
+  </tr>
+  
+  <% @messages.each do |message| %>
+    <tr>
+    <td>
+      <%= message.id %>
+    </td>
+
+    <td>
+      <%= message.chat_room_id %> (<%= message.chat_room.title %>)
+    </td>
+
+    <td>
+      <%= message.user_id %> (<%= message.user.name %>)
+    </td>
+
+    <td>
+      <%= message.body %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(message.created_at) %>
+    </td>
+
+    <td>
+    </td>
+  </tr>
+  <% end %>
+</table>

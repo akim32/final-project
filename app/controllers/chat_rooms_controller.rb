@@ -20,6 +20,7 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
     @chat_room_messages = @chat_room.messages.limit(11)
+    # @chat_room_questions = @chat_room.generate_for(@chat_room)
     @message = Message.new
   end
 
