@@ -23,10 +23,16 @@ class Message < ApplicationRecord
       sleep(3)
       #erase first question pair, which has an index of 1 in the array
       $vault[@question_index].delete_at(1)
+      #conditional to see if the question bank has been exhausted.  if so, generate new
+      if $vault[@question_index][1] == nil
+        $vault[@question_index].delete_at(0)
+        randomize(self.chat_room)     
+        @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)}); #redefine the index here
+      end
       @next_question = Message.new
       @next_question.user_id = 1
       @next_question.chat_room_id = self.chat_room.id
-      @next_question.body = $vault[0][1][:question]
+      @next_question.body = $vault[@question_index][1][:question] 
       @next_question.save
       #need job to check if next question exists, and if not, randomize.  need randomize function for rooms model.
     end
@@ -36,4 +42,22 @@ class Message < ApplicationRecord
     #created_at.strftime('%H:%M:%S %d %B %Y')
     created_at.strftime('%H:%M:%S')
   end
+  
+  #DUPLICATE CODE WITH CHAT_ROOM MODEL
+  def randomize(subject)
+    @subject_questions = [subject.title]
+    #put each question into a hash, then put into the @subject_questions array
+    subject.questions.order("RANDOM()").each do |question|
+      @append_question = { 
+        :question_id => question.id,
+        :question => question.question,
+        :answer => question.answer
+        }
+      # add question hash to the array
+      @subject_questions.push(@append_question)
+    end
+    #push subject to vault
+    $vault.push(@subject_questions)
+  end
+  
 end
