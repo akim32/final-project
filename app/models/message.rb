@@ -25,7 +25,7 @@ class Message < ApplicationRecord
       $vault[@question_index].delete_at(1)
       #conditional to see if the question bank has been exhausted.  if so, generate new
       if $vault[@question_index][1] == nil
-        $vault[@question_index].delete_at(0)
+        $vault[@question_index].delete_at(0) #NEED TO FIX THIS TO DROP EMPTY ARRAY
         randomize(self.chat_room)     
         @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)}); #redefine the index here
       end
