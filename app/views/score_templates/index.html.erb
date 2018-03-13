@@ -1,0 +1,74 @@
+<h1>
+  All scores
+</h1>
+
+<a href="/scores/new">
+  Add a new score
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      Score ID
+    </th>
+
+    <th>
+      User
+    </th>
+
+    <th>
+      Category
+    </th>
+
+    <th>
+      Question
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @scores.each do |score| %>
+  <tr>
+    <td>
+      <%= score.id %>
+    </td>
+
+    <td>
+      <%= score.user_id %>
+    </td>
+
+    <td>
+      <%= score.question.chat_room.title %>
+    </td>
+
+    <td>
+      (ID #<%= score.question_id %>): <%= score.question.question %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(score.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(score.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/scores/<%= score.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

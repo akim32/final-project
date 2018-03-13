@@ -1,8 +1,10 @@
-ActiveAdmin.register Question do
+ActiveAdmin.register Score do
+  permit_params 
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :state, :question, :answer
+# permit_params :list, :of, :attributes, :on, :model
 #
 # or
 #

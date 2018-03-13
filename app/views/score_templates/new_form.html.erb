@@ -1,0 +1,46 @@
+<!-- Validation failure messages -->
+<% if @score.present? %>
+  <% if @score.errors.any? %>
+    <% @score.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new score
+</h1>
+
+<hr>
+
+<form action="/create_score" method="post">
+  <!-- Label and input for user_id -->
+  <div class="form-group">
+    <label for="user_id">
+      User
+    </label>
+
+    <input type="text" id="user_id" name="user_id" class="form-control" value="<%= @score.try(:user_id) %>">
+  </div>
+
+  <!-- Label and input for question_id -->
+  <div class="form-group">
+    <label for="question_id">
+      Question
+    </label>
+
+    <input type="text" id="question_id" name="question_id" class="form-control" value="<%= @score.try(:question_id) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create score
+  </button>
+</form>
+
+<hr>
+
+<a href="/scores">
+  Go back
+</a>

@@ -1,0 +1,56 @@
+<h1>
+  Score #<%= @score.id %> details
+</h1>
+
+<a href="/scores/<%= @score.id %>/edit">
+  Edit score
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    User
+  </dt>
+  <dd>
+    <%= @score.user_id %>
+  </dd>
+
+  <dt>
+    Category
+  </dt>
+  <dd>
+    <%= @score.question.chat_room.title %>
+  </dd>
+
+  <dt>
+    Question
+  </dt>
+  <dd>
+    <%= @score.question_id %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@score.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@score.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_score/<%= @score.id %>">
+  Delete score
+</a>
+
+<hr>
+
+<a href="/scores">
+  Go back
+</a>

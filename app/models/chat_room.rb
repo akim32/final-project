@@ -8,10 +8,11 @@ class ChatRoom < ApplicationRecord
   #instantiate global hash for all qna, sorted by subject
   $vault = [] 
   
-  @subjects.each do |subject|
+  #for each chat room with a state of 1
+  @subjects.where(:state => 0).each do |subject|
     @subject_questions = [subject.title]
-    #put each question into a hash, then put into the @subject_questions array
-    subject.questions.order("RANDOM()").each do |question|
+    #put each APPROVED question (state = 1) into a hash, then put into the @subject_questions array
+    subject.questions.where(:state => 1).order("RANDOM()").each do |question|
       @append_question = { 
         :question_id => question.id,
         :question => question.question,
@@ -25,32 +26,23 @@ class ChatRoom < ApplicationRecord
     
   end
   
-  #method to reshuffle questions for a subject after they have been exhausted
-  def randomize(subject)
-    @subject_questions = [subject.title]
-    #put each question into a hash, then put into the @subject_questions array
-    subject.questions.order("RANDOM()").each do |question|
-      @append_question = { 
-        :question_id => question.id,
-        :question => question.question,
-        :answer => question.answer
-        }
-      # add question hash to the array
-      @subject_questions.push(@append_question)
-    end
-    #push subject to vault
-    $vault.push(@subject_questions)
-  end
-  
-  # def generate_for(room_id)
-  #   @qna = ChatRoom.find_by(:id => room_id).questions.shuffle.first
-  #   return { :question => @qna.question, :answer => @qna.answer }
-  #   #if @subject.state = 0
-  #     #BOT LOGIC HERE
-  #   # @subject.questions.shuffle
-  #     #@question = @subject.questions.first.question
-  #     #@answer = @subject.questions.first.answer
-  #   #end
+  #DUPLICATE CODE W MESSAGE MODEL => delete later if no problems...
+  # #method to reshuffle questions for a subject after they have been exhausted
+  # def randomize(subject)
+  #   @subject_questions = [subject.title]
+  #   #put each question into a hash, then put into the @subject_questions array
+  #   subject.questions.order("RANDOM()").each do |question|
+  #     @append_question = { 
+  #       :question_id => question.id,
+  #       :question => question.question,
+  #       :answer => question.answer
+  #       }
+  #     # add question hash to the array
+  #     @subject_questions.push(@append_question)
+  #   end
+  #   #push subject to vault
+  #   $vault.push(@subject_questions)
   # end
+  
 
 end

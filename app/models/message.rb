@@ -13,19 +13,22 @@ class Message < ApplicationRecord
     @room_title = self.chat_room.title
     @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
     if self.body == $vault[@question_index][1][:answer]
+      #award user one point
+      self.user.score += 1
+      self.user.save
       #congrats method for answering correctly
       @congrats = Message.new
       @congrats.user_id = 1
       @congrats.chat_room_id = self.chat_room.id
-      @congrats.body = "you got it! Good job #{self.user.name}, you now have 12 points. Waiting 3 seconds for the next question..."
+      @congrats.body = "you got it! Good job #{self.user.name}, you now have #{self.user.score} points. Waiting 3 seconds for the next question..."
       @congrats.save
       #spit next question
       sleep(3)
       #erase first question pair, which has an index of 1 in the array
       $vault[@question_index].delete_at(1)
-      #conditional to see if the question bank has been exhausted.  if so, generate new
+      #conditional to see if the question bank has been exhausted.  if so, generate new with randomize method defined below
       if $vault[@question_index][1] == nil
-        $vault[@question_index].delete_at(0) #NEED TO FIX THIS TO DROP EMPTY ARRAY
+        $vault.delete_at(@question_index) #drop empty array (cleanup of vault)
         randomize(self.chat_room)     
         @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)}); #redefine the index here
       end
@@ -47,7 +50,7 @@ class Message < ApplicationRecord
   def randomize(subject)
     @subject_questions = [subject.title]
     #put each question into a hash, then put into the @subject_questions array
-    subject.questions.order("RANDOM()").each do |question|
+    subject.questions.where(:state => 1).order("RANDOM()").each do |question|
       @append_question = { 
         :question_id => question.id,
         :question => question.question,
