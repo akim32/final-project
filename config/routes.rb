@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self) rescue ActiveAdmin::DatabaseHitDuringLoad #for migration issues to heroku
+  # ActiveAdmin.routes(self)
   # Routes for the Question resource:
 
   # CREATE

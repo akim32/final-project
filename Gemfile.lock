@@ -231,7 +231,7 @@ DEPENDENCIES
   devise
   draft_generators!
   jquery-rails
-  pg (= 0.21)
+  pg (~> 0.21)
   pry-rails
   puma (~> 3.0)
   rails (>= 5.0.0.2)
