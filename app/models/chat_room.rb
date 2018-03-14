@@ -1,7 +1,7 @@
 class ChatRoom < ApplicationRecord
   belongs_to :user
-  has_many :messages, dependent: :destroy
-  has_many :questions, dependent: :destroy
+  has_many :messages
+  has_many :questions
   
   #put all rooms in a variable.
   @subjects = ChatRoom.all 
