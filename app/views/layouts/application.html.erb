@@ -2,6 +2,14 @@
 <html>
 <head>
   <title>GameBooth</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" >
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -21,25 +29,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a href="/questions/new" class="nav-link">
-      Submit a Question 
-    </a>
-    <a href="/questions" class="nav-link">
-      Questions 
-    </a>
-    <a href="/messages" class="nav-link">
-      Messages 
-    </a>
-    <a href="/scores" class="nav-link">
-      Scores 
-    </a>
-
-
     <div class="collapse navbar-collapse" id="collapsible-nav-links">
       <ul class="navbar-nav mr-auto">
-      <!--</ul>-->
+        <li class="nav-item">
+          <a href="/questions/new" class="nav-link">
+            Submit a Question 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/questions" class="nav-link">
+            Questions 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/messages" class="nav-link">
+            Messages 
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/scores" class="nav-link">
+            Scores 
+          </a>
+        </li>
+      </ul>
       <!-- Conditional elements -->
-      <!--<ul class="navbar-nav">-->
+      <ul class="navbar-nav">
         <% if current_user.blank? %>
           <li class="nav-item">
             <a href="/users/sign_in" class="nav-link">
@@ -55,12 +69,12 @@
         <% else %>
           <li class="nav-item">
             <a href="/users/edit" class="nav-link">
-              <%= current_user.email %>
+              (<%= current_user.name %>)
             </a>
           </li>
 
           <li class="nav-item">
-            <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
         <% end %>
       </ul>
