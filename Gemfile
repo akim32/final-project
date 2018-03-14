@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc1', '< 5.1'
+gem 'rails', '>= 5.0.0.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -29,7 +29,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', "0.21"
   gem 'rails_12factor'
 end
 
