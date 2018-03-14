@@ -16,7 +16,8 @@ class ChatRoom < ApplicationRecord
       @append_question = { 
         :question_id => question.id,
         :question => question.question,
-        :answer => question.answer
+        :answer => question.answer,
+        :answer_explanation => question.answer_explanation
         }
       # add question hash to the array
       @subject_questions.push(@append_question)

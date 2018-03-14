@@ -16,3 +16,22 @@ footer {
 body {
   font-family: 'Roboto Mono', monospace;
 }
+
+.chat {
+  position: relative;
+  bottom: 0px;
+  left: 0;
+  resize: none;
+}
+
+.usermessage {
+  color: #5C6268;
+}
+
+.username {
+  color: #750002;
+}
+
+.moderator {
+  color: #63997C;
+}

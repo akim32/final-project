@@ -20,6 +20,7 @@ jQuery(document).on 'turbolinks:load', ->
         messages.append data['message']
         messages_to_bottom()
         #add more logic here
+        $('#messages-container').scrollTop($('#messages-container')[0].scrollHeight)
 
       send_message: (message, chat_room_id) ->
         @perform 'send_message', message: message, chat_room_id: chat_room_id
@@ -48,5 +49,4 @@ jQuery(document).on 'turbolinks:load', ->
           textarea.val('')
         e.preventDefault()
         return false
-        
         

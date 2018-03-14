@@ -20,7 +20,7 @@ class Message < ApplicationRecord
       @congrats = Message.new
       @congrats.user_id = 1
       @congrats.chat_room_id = self.chat_room.id
-      @congrats.body = "you got it! Good job #{self.user.name}, you now have #{self.user.score} points. Waiting 3 seconds for the next question..."
+      @congrats.body = "Correct, #{self.user.name}! #{$vault[@question_index][1][:answer_explanation]} You now have #{self.user.score} points. Generating next question..."
       @congrats.save
       #spit next question
       sleep(3)
@@ -54,7 +54,8 @@ class Message < ApplicationRecord
       @append_question = { 
         :question_id => question.id,
         :question => question.question,
-        :answer => question.answer
+        :answer => question.answer,
+        :answer_explanation => question.answer_explanation
         }
       # add question hash to the array
       @subject_questions.push(@append_question)
