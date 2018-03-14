@@ -17,10 +17,10 @@
 
 <h4>Framework & Guidelines for Question Submissions</h4>
 <ul>
-  <li>Only submit questions with a clear, objective answer.  Fill in the description when applicable.</li>
-  <li>Submit something that you would find meaningful and challenging to answer yourself.</li>
-  <li>User proper spelling & grammar.  Make sure there are no typos!</li>
-  <li>Have fun with it.</li>
+  <li>Only submit questions with a clear, objective answer.  Fill in the 'answer explanation' with fun & insightful information.</li>
+  <li>Submit something that you would find meaningful to know and answer yourself. Try a question you don't know the answer to already!</li>
+  <li>User proper spelling, letter-casing, & grammar.  Make sure there are no typos!</li>
+  <li>Have fun with it!</li>
 </ul>
 
 <p>
@@ -42,7 +42,7 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
       Question
     </label>
 
-    <input type="text" id="question" name="question" class="form-control" value="<%= @question.try(:question) %>">
+    <textarea rows="5" id="question" name="question" class="form-control" value="<%= @question.try(:question) %>"></textarea>
   </div>
 
   <!-- Label and input for answer -->
@@ -51,7 +51,7 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
       Answer
     </label>
 
-    <input type="text" id="answer" name="answer" class="form-control" value="<%= @question.try(:answer) %>">
+    <textarea rows="2" id="answer" name="answer" class="form-control" value="<%= @question.try(:answer) %>"></textarea>
   </div>
 
   <!-- Label and input for answer_explanation -->
@@ -60,7 +60,7 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
       Answer explanation
     </label>
 
-    <input type="text" id="answer_explanation" name="answer_explanation" class="form-control" value="<%= @question.try(:answer_explanation) %>">
+    <textarea rows="5" id="answer_explanation" name="answer_explanation" class="form-control" value="<%= @question.try(:answer_explanation) %>"></textarea>
   </div>
 
   <!-- Label and input for actor_id -->

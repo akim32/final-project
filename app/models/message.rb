@@ -50,7 +50,8 @@ class Message < ApplicationRecord
   def randomize(subject)
     @subject_questions = [subject.title]
     #put each question into a hash, then put into the @subject_questions array
-    subject.questions.where(:state => 1).order("RANDOM()").each do |question|
+    #subject.questions.where(:state => 1).order("RANDOM()").each do |question|
+    subject.questions.order("RANDOM()").each do |question|
       @append_question = { 
         :question_id => question.id,
         :question => question.question,
