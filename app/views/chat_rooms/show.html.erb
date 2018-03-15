@@ -3,7 +3,7 @@
 <div id="messages" class="messages" data-chat-room-id="<%= @chat_room.id %>">
   <!-- opening message (fix this) --> 
   <span class="text-muted">Welcome to Game Booth, <%= current_user.name %>, a community-driven database of questions and answers.  Enter your response to questions given by the moderator.  All answers are case-sensitive.
-  <br> <strong><span class="username">Current question: </span><span class="username"><%= @current_question %></span></strong><br>
+  <br> <strong><span class="username">Current question: </span><span class="username"><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %></span></strong><br>
   <%= render @chat_room_messages %>
 </div>
 
