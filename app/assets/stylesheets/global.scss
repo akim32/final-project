@@ -35,3 +35,35 @@ body {
 .moderator {
   color: #63997C;
 }
+
+#messages {
+  height: 650px;
+  overflow-y: hidden;
+}
+
+#messages:hover { 
+  overflow: auto; 
+}
+
+/**  STYLE 3 */
+#messages::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+}
+
+#messages::-webkit-scrollbar {
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+#messages::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#ff9a9e), color-stop(99%, #fecfef), to(#fecfef));
+  background-image: -webkit-linear-gradient(bottom, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%)
+
+}
+// ::-webkit-scrollbar { 
+//     display: none; 
+// }

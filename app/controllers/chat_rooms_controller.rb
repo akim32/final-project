@@ -19,7 +19,8 @@ class ChatRoomsController < ApplicationController
 
   def show
     @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
-    @chat_room_messages = @chat_room.messages.order(created_at: :desc).limit(12).reverse
+    #SHOW LAST X NUMBER OF MSGS
+    @chat_room_messages = @chat_room.messages.order(created_at: :desc).limit(0).reverse
     @message = Message.new
     #set variable for current question
     @room_title = @chat_room.title

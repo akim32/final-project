@@ -1,19 +1,22 @@
-<h2>-> entering<span class="username"><%= @chat_room.title %></span>...</h2>
-<h5>[<%= @chat_room.description.presence || "no description" %>]</h5>
+
 <div id="messages" class="messages" data-chat-room-id="<%= @chat_room.id %>">
+  <h2>-> entering<span class="username"><%= @chat_room.title %></span>...</h2>
+  <h5>[<%= @chat_room.description.presence || "no description" %>]</h5>
   <!-- opening message (fix this) --> 
   <span class="text-muted">Welcome to Game Booth, <%= current_user.name %>, a community-driven knowledge database.  Chat your response to questions given by the game moderator.  All answers are case-sensitive and must be typed <u>exactly how the submittor has defined it.</u> <br>
     *EXAMPLE: Name the largest freshwater lake in the world?*<br>
     -> "superior" (X) <br>
     -> "Lake superior" (X) <br>
     -> "Lake Superior" (correct!) <br>
+    -> HAVING TECHNICAL PROBLEMS? CHAT NOW SHOWING? TRY REFRESHING THE PAGE. <br>
+    ...okay, are you ready? Answer the 
     <span class="moderator"><b>current question:</b></span>
-  <br> 
-  <strong><span class="username"><span class="username"><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %></span></strong><br>
+  <br><br> 
+  <span class="username"><h6>"<strong><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %>"</strong></h6></span><br>
   <%= render @chat_room_messages %>
 </div>
 
-<div class="form-group">
+<div class="form-group chat">
 <%= form_for @message, url: '#' do |f| %>
   <%= hidden_field_tag 'chat_room_id', @chat_room.id %>
   
