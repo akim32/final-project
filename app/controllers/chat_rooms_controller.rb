@@ -28,10 +28,13 @@ class ChatRoomsController < ApplicationController
       @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
       @current_question = $vault[@question_index][1][:question]
       else
-      @chat_room.randomize(@chat_room)
-      @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
-      @current_question = $vault[@question_index][1][:question]
-      # @current_question = "There are no questions in the vault"
+        if @chat_room.questions.count > 0
+          @chat_room.randomize(@chat_room)
+          @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
+          @current_question = $vault[@question_index][1][:question]
+        else
+          @current_question = "There are no questions in the vault"
+        end
     end
   end
 
