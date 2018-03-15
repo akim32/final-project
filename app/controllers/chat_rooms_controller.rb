@@ -1,6 +1,6 @@
 class ChatRoomsController < ApplicationController
   def index
-    @chat_rooms = ChatRoom.joins(:questions).group('chat_room_id')
+    @chat_rooms = ChatRoom.joins(:questions).group(:chat_room_id)
   end
 
   def new
