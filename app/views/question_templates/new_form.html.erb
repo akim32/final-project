@@ -36,6 +36,19 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
 <hr>
 
 <form action="/create_question" method="post">
+  <!-- Label for question subject -->
+  <div class="form-group">
+    <label for="chat_room_id">
+      Question Subject
+    </label>
+
+    <%= select_tag("chat_room_id", options_from_collection_for_select(ChatRoom.all, :id, :title), :class => "form-control") %>
+  </div>
+  
+  <a href="/chat_rooms/new">or add a new subject first</a>
+  <br>
+  <br>
+
   <!-- Label and input for question -->
   <div class="form-group">
     <label for="question">
@@ -62,17 +75,6 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
 
     <textarea rows="5" id="answer_explanation" name="answer_explanation" class="form-control" value="<%= @question.try(:answer_explanation) %>"></textarea>
   </div>
-
-  <!-- Label and input for actor_id -->
-  <div class="form-group">
-    <label for="chat_room_id">
-      Subject
-    </label>
-
-    <%= select_tag("chat_room_id", options_from_collection_for_select(ChatRoom.all, :id, :title), :class => "form-control") %>
-  </div>
-  
-  <a href="/chat_rooms/new">or add a new subject first</a>
 
   <!-- Label and input for user_id -->
   <div class="form-group">
