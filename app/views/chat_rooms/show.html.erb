@@ -1,9 +1,15 @@
-<h2>entering <span class="username"><%= @chat_room.title %></span>...</h2>
-<h5>about this game: <%= @chat_room.description.presence || "no description" %></h5>
+<h2>-> entering<span class="username"><%= @chat_room.title %></span>...</h2>
+<h5>[<%= @chat_room.description.presence || "no description" %>]</h5>
 <div id="messages" class="messages" data-chat-room-id="<%= @chat_room.id %>">
   <!-- opening message (fix this) --> 
-  <span class="text-muted">Welcome to Game Booth, <%= current_user.name %>, a community-driven database of questions and answers.  Enter your response to questions given by the moderator.  All answers are case-sensitive.
-  <br> <strong><span class="username">Current question: </span><span class="username"><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %></span></strong><br>
+  <span class="text-muted">Welcome to Game Booth, <%= current_user.name %>, a community-driven knowledge database.  Chat your response to questions given by the game moderator.  All answers are case-sensitive and must be typed <u>exactly how the submittor has defined it.</u> <br>
+    *EXAMPLE: Name the largest freshwater lake in the world?*<br>
+    -> "superior" (X) <br>
+    -> "Lake superior" (X) <br>
+    -> "Lake Superior" (correct!) <br>
+    <span class="moderator"><b>current question:</b></span>
+  <br> 
+  <strong><span class="username"><span class="username"><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %></span></strong><br>
   <%= render @chat_room_messages %>
 </div>
 

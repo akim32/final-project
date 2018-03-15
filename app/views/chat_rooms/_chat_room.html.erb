@@ -1,4 +1,6 @@
   <li><h4><%= link_to "#{chat_room.title}", chat_room_path(chat_room) %></h4> 
-   <h6>- <%= chat_room.description.presence || "no description" %> | <%= chat_room.questions.count %> questions | <%= chat_room.messages.count %> contributions</h6>
+   <h6>- <%= chat_room.description.presence || "no description" %>
+   <br>
+   - <%= chat_room.questions.count %> questions | <%= chat_room.messages.count %> contributions</h6>
   </li>
 
