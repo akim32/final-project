@@ -1,6 +1,6 @@
 class ChatRoomsController < ApplicationController
   def index
-    @chat_rooms = ChatRoom.all
+    @chat_rooms = ChatRoom.joins(:questions).group('chat_room_id')
   end
 
   def new
@@ -20,17 +20,24 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
     @chat_room_messages = @chat_room.messages.order(created_at: :desc).limit(12).reverse
-    # @chat_room_questions = @chat_room.generate_for(@chat_room)
     @message = Message.new
     #set variable for current question
     @room_title = @chat_room.title
-    @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
-    @current_question = $vault[@question_index][1][:question]
+    #seeing if the game questions exist in the vault.  if not, randomize.
+    if $vault.detect{|aa| aa.include?(@room_title)}
+      @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
+      @current_question = $vault[@question_index][1][:question]
+      else
+      @chat_room.randomize(@chat_room)
+      @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
+      @current_question = $vault[@question_index][1][:question]
+      # @current_question = "There are no questions in the vault"
+    end
   end
 
   private
 
   def chat_room_params
-    params.require(:chat_room).permit(:title)
+    params.require(:chat_room).permit(:title, :description)
   end
 end

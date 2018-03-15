@@ -26,8 +26,9 @@ class QuestionsController < ApplicationController
 
     if @question.valid?
       @question.save
+      flash[:success] = 'Question submitted successfully!'
 
-      redirect_to("/questions", :notice => "Question created successfully.")
+      redirect_to("/questions")
     else
       render("question_templates/new_form.html.erb")
     end

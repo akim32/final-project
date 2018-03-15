@@ -1,6 +1,7 @@
 <div id="messages" class="messages">
   <span class="<%= message.user.id == 1? "moderator":"username" %>"><b><%= message.user.username.presence || message.user.name %>: </b></span>
-  <span class="usermessage"><%= message.body %></span><br>
+  <!-- method for incorporating ling breaks, and chomping the last line break -->
+  <span class="usermessage"><%= message.body.to_s.chomp.gsub(/\n/, '<br/>').html_safe %></span><br>
 </div>
 
 

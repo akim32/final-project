@@ -53,7 +53,7 @@
     </td>
 
     <td>
-      <%= question.question %>
+      <%= simple_format(question.question) %>
     </td>
 
     <td>
@@ -65,7 +65,11 @@
     </td>
 
     <td>
+      <% if question.chat_room.present? %>
       <%= question.chat_room.title %>
+      <% else %>
+      (defunct)
+      <% end %>
     </td>
 
     <td>
