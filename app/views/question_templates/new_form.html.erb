@@ -17,21 +17,11 @@
 
 <h4>Framework & Guidelines for Question Submissions</h4>
 <ul>
-  <li>Only submit questions with a clear, objective answer.  Fill in the 'answer explanation' with fun & insightful information.</li>
+  <li>Only submit questions with a clear, short, and objective answer.  Fill in the 'answer explanation' with fun & insightful information.</li>
   <li>Submit something that you would find meaningful to know and answer yourself. Try a question you don't know the answer to already!</li>
   <li>User proper spelling, letter-casing, & grammar.  Make sure there are no typos!</li>
   <li>Have fun with it! What are you passionate about? Make your own curriculum and share it with the community.</li>
 </ul>
-
-<p>
-Example of a good question: 
-<br>
-Name the largest freshwater lake in the world? 
-<br>
-Answer: Lake Superior.
-<br>
-Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometres), or roughly the size of Maine, and holds 10 percent of the world's surface fresh water.
-</p>
 
 <hr>
 
@@ -55,7 +45,7 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
       Question
     </label>
 
-    <textarea rows="5" id="question" name="question" class="form-control" value="<%= @question.try(:question) %>"></textarea>
+    <textarea rows="5" id="question" name="question" class="form-control" placeholder="Name the largest freshwater lake in the world?"></textarea>
   </div>
 
   <!-- Label and input for answer -->
@@ -64,16 +54,16 @@ Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometr
       Answer
     </label>
 
-    <textarea rows="2" id="answer" name="answer" class="form-control" value="<%= @question.try(:answer) %>"></textarea>
+    <textarea rows="1" id="answer" name="answer" class="form-control" placeholder="Lake Superior"></textarea>
   </div>
 
   <!-- Label and input for answer_explanation -->
   <div class="form-group">
     <label for="answer_explanation">
-      Answer explanation
+      Answer explanation (optional)
     </label>
 
-    <textarea rows="5" id="answer_explanation" name="answer_explanation" class="form-control" value="<%= @question.try(:answer_explanation) %>"></textarea>
+    <textarea rows="5" id="answer_explanation" name="answer_explanation" class="form-control" placeholder="Answer explanation: Lake Superior is 31,700 square miles (82,100 square kilometres), or roughly the size of Maine, and holds 10 percent of the world's surface fresh water."></textarea>
   </div>
 
   <!-- Label and input for user_id -->

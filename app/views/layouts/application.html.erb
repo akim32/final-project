@@ -14,6 +14,7 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
   
   <% if Rails.env.production? %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -103,8 +104,10 @@
       
 <div class="container">
   <!--flash keys-->
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% if current_user.present? %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
   <% end %>
 
   <%= yield %>
