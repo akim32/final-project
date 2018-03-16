@@ -50,13 +50,14 @@
             Submit a Question 
           </a>
         </li>
-        
+
+        <% if current_user.present? && current_user.id == 1 %>
+                
         <li class="nav-item">
           <a href="/questions" class="nav-link">
             Submitted Questions
           </a>
         </li>
-        <% if current_user.present? && current_user.id == 1 %>
         <li class="nav-item">
           <a href="/messages" class="nav-link">
             Messages 

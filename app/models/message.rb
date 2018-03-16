@@ -14,13 +14,18 @@ class Message < ApplicationRecord
     @question_index = $vault.index($vault.detect{|aa| aa.include?(@room_title)});
     if self.body == $vault[@question_index][1][:answer]
       #award user one point
+      #add logic for not awarding duplicate points
       self.user.score += 1
       self.user.save
+      @scored = Score.new
+      @scored.user_id = self.user.id
+      @scored.question_id = $vault[@question_index][1][:question_id]
+      @scored.save
       #congrats method for answering correctly
       @congrats = Message.new
       @congrats.user_id = 1
       @congrats.chat_room_id = self.chat_room.id
-      @congrats.body = "Correct, #{self.user.name}! #{$vault[@question_index][1][:answer_explanation]} You now have #{self.user.score} points. Generating next question..."
+      @congrats.body = "Correct, #{self.user.name} (#{self.user.score} points)! #{$vault[@question_index][1][:answer_explanation]} <br> Generating next question..."
       @congrats.save
       #spit next question
       sleep(3)

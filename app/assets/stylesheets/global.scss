@@ -76,22 +76,80 @@ body {
 }
 
 //change link colors
-li a:link {
+h2 a:link {
     color: #750002;
 }
 
-li a:visited {
+h2 a:visited {
     color: #750002;
 }
 
-li a:hover {
+h2 a:hover {
     color: #A62E4B;
 }
 
-li a:active {
+h2 a:active {
     color: #750002;
 }
 
-li a {
+h2 a {
     color: #750002;
+}
+
+h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #750002; }
+}
+
+
+/*
+ BUTTON STYLING
+*/
+
+/**  colors and transitions back to normal
+  *  hex colors from flatuicolors.com   
+  **/
+
+.btn-1 {
+    background: #fff; /* BELIZE HOLE */
+    -webkit-transition: background 225ms ease!important;
+    -moz-transition: background 225ms ease!important;
+    transition: background 225ms ease!important;
+}
+
+.btn-1:before, .btn-1:focus, .btn-1:hover {
+    background: #F8F9FA; /* peter river */
+}
+
+/* base btn styling */
+.btn-base {
+    font-family: Oswald, sans-serif;
+    font-size: 72px;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 225ms ease;
+    border: none;
+    border-radius: 2px;
+    overflow: hidden;
+    color: #5C6268;
+    text-align: center;
+    line-height: 102px;
 }

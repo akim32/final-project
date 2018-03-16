@@ -1,18 +1,23 @@
 
 <div id="messages" class="messages" data-chat-room-id="<%= @chat_room.id %>">
-  <h2>-> entering<span class="username"><%= @chat_room.title %></span>...</h2>
-  <h5>[<%= @chat_room.description.presence || "no description" %>]</h5>
+  <h1 class="text-center"><span class="username">[<%= @chat_room.title %>]</span></h1>
+  <h5 class="text-center"><%= @chat_room.description.presence || "no description" %></h5>
   <!-- opening message (fix this) --> 
-  <span class="text-muted">Welcome to Game Booth, <%= current_user.name %>, a community-driven knowledge database.  Chat your response to questions given by the game moderator.  All answers are case-sensitive and must be typed <u>exactly how the submittor has defined it.</u> <br>
-    *EXAMPLE: Name the largest freshwater lake in the world?*<br>
-    -> "superior" (X) <br>
-    -> "Lake superior" (X) <br>
-    -> "Lake Superior" (correct!) <br>
-    <p class="text-danger">-> HAVING TECHNICAL PROBLEMS? CHAT NOW SHOWING? TRY REFRESHING THE PAGE. </p>
-    ...okay, are you ready? Answer the 
-    <span class="moderator"><b>current question:</b></span>
-  <br><br> 
-  <span class="username"><h6>"<strong><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %>"</strong></h6></span><br>
+  <% unless @chat_room.title == "gamebooth feedback" %>
+    <span class="text-muted">Welcome to Game Booth, <%= current_user.name %>, a community-driven knowledge database.  Chat your response to questions given by the game moderator.  All answers are case-sensitive and must be typed <u>exactly how the submittor has defined it.</u> <br>
+      *EXAMPLE: Name the largest freshwater lake in the world?*<br>
+      -> "superior" (X) <br>
+      -> "Lake superior" (X) <br>
+      -> "Lake Superior" (correct!) <br>
+      <p class="text-danger">-> HAVING TECHNICAL PROBLEMS? CHAT NOW SHOWING? TRY REFRESHING THE PAGE. </p>
+      ...okay, are you ready? Answer the 
+    </span>
+      <span class="moderator"><b>current question:</b></span>
+    <br><br> 
+    <span class="username"><h6>"<strong><%= @current_question.to_s.chomp.gsub(/\n/, '<br/>').html_safe %>"</strong></h6></span><br>
+  <% else %> 
+    <div class="text-muted">Questions? Comments? Concerns? This subject room is created as a tool to recieve your feedback, so we can make this app better. There is no bot in this room, but we hear you. Give us your opinion; we highly appreciate it.</div>
+  <% end %>
   <%= render @chat_room_messages %>
 </div>
 

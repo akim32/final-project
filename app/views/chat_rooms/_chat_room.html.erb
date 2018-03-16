@@ -1,4 +1,18 @@
-  <li><h6><%= link_to "#{chat_room.title}", chat_room_path(chat_room) %> - <%= chat_room.description.presence || "no description" %> |  <%= chat_room.questions.count %> questions (<%= chat_room.messages.count %>)</h6> 
 
-  </li>
+  <div class="col-md-6">
+    <div class="card mb-3">
+      <h6 class="card-header text-center">
+        Game Room ID: <%= chat_room.id %>
+      </h6>
 
+      <div class="card-body btn-base btn-1">
+        <h2 class="text-center"><%= link_to "#{chat_room.title}", chat_room_path(chat_room), class: "" %> </h2> 
+        <h6 class="text-center"><%= chat_room.description.presence || "no description" %></h6>
+      </div>
+
+      <div class="card-footer text-center">
+        <%= chat_room.questions.count %> questions (<%= chat_room.messages.count %>) | <%= chat_room.created_at %>
+        <!--<%= link_to "Download to .csv (coming soon)", "#", class: "btn btn-block btn-link" %>-->
+      </div>
+    </div>
+  </div>
