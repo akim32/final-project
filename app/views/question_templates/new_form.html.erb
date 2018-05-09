@@ -32,7 +32,7 @@
       Question Subject
     </label>
 
-    <%= select_tag("chat_room_id", options_from_collection_for_select(ChatRoom.all, :id, :title), :class => "form-control") %>
+    <%= select_tag("chat_room_id", options_from_collection_for_select(ChatRoom.where(state: 0), :id, :title), :class => "form-control") %>
   </div>
   
   <a href="/chat_rooms/new">or add a new subject first</a>

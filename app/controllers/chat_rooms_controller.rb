@@ -1,6 +1,7 @@
 class ChatRoomsController < ApplicationController
   def index
-    @chat_rooms = ChatRoom.all
+    #show only rooms in index where state is 0
+    @chat_rooms = ChatRoom.where(state: 0)
   end
 
   def new
